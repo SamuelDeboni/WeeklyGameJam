@@ -38,25 +38,31 @@ editor/display_folded = true
 [node name="ItemBlock" parent="ItemBlocks" index="0" instance=ExtResource( 3 )]
 
 position = Vector2( 216, 248 )
+is_powerup = null
 
 [node name="ItemBlock2" parent="ItemBlocks" index="1" instance=ExtResource( 3 )]
 
 position = Vector2( 248, 248 )
+is_powerup = null
 
 [node name="ItemBlock3" parent="ItemBlocks" index="2" instance=ExtResource( 3 )]
 
 position = Vector2( 984, 248 )
+is_powerup = null
 
 [node name="ItemBlock4" parent="ItemBlocks" index="3" instance=ExtResource( 3 )]
 
 position = Vector2( 1080, 200 )
+is_powerup = null
 
 [node name="ItemBlock5" parent="ItemBlocks" index="4" instance=ExtResource( 3 )]
 
 position = Vector2( 1112, 200 )
+is_powerup = null
 
 [node name="ItemBlock6" parent="ItemBlocks" index="5" instance=ExtResource( 3 )]
 
 position = Vector2( 1144, 200 )
+is_powerup = null
 
 
