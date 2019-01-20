@@ -8,9 +8,7 @@
 [ext_resource path="res://Sprites/BG_2.png" type="Texture" id=6]
 [ext_resource path="res://Sprites/BG_1.png" type="Texture" id=7]
 
-[node name="Node" type="Node" index="0"]
-
-editor/display_folded = true
+[node name="Node" type="Node"]
 
 [node name="TileMap" type="TileMap" parent="." index="0"]
 

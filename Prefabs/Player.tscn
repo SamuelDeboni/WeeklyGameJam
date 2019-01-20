@@ -8,7 +8,7 @@
 [ext_resource path="res://Sprites/Player/Jack_Walking_3.png" type="Texture" id=6]
 [ext_resource path="res://Sprites/Player/Jack_Jumping.png" type="Texture" id=7]
 
-[sub_resource type="SpriteFrames" id=2]
+[sub_resource type="SpriteFrames" id=1]
 
 animations = [ {
 "frames": [ ExtResource( 2 ) ],
@@ -24,15 +24,20 @@ animations = [ {
 "frames": [ ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ) ],
 "loop": true,
 "name": "walking",
-"speed": 12.0
+"speed": 10.0
 }, {
 "frames": [ ExtResource( 7 ) ],
 "loop": false,
 "name": "jump",
 "speed": 5.0
+}, {
+"frames": [ ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ) ],
+"loop": true,
+"name": "run",
+"speed": 18.0
 } ]
 
-[sub_resource type="RectangleShape2D" id=1]
+[sub_resource type="RectangleShape2D" id=2]
 
 custom_solver_bias = 0.0
 extents = Vector2( 6.22654, 10 )
@@ -49,7 +54,7 @@ _sections_unfolded = [ "Collision", "Material", "Pause", "Pickable", "Transform"
 
 [node name="Sprite" type="AnimatedSprite" parent="." index="0"]
 
-frames = SubResource( 2 )
+frames = SubResource( 1 )
 animation = "default"
 playing = true
 
@@ -57,7 +62,7 @@ playing = true
 
 position = Vector2( 0, 0.33937 )
 scale = Vector2( 0.8, 0.628982 )
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="Camera2D" type="Camera2D" parent="." index="2"]

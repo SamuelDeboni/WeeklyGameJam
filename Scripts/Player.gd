@@ -15,9 +15,9 @@ func _process(delta):
 	
 	move_and_slide(vel*vel_mod,Vector2(0,-1))
 	
-	if Input.is_action_pressed("go_right") and vel.x <= 100*vel_mod:
+	if Input.is_action_pressed("go_right"):
 		vel.x += 400*delta
-	elif Input.is_action_pressed("go_left") and vel.x >= -100*vel_mod:
+	elif Input.is_action_pressed("go_left"):
 		vel.x += -400*delta
 	elif vel.x > 10:
 		vel.x -= 400*delta
@@ -25,6 +25,8 @@ func _process(delta):
 		vel.x += 400*delta
 	else:
 		vel.x = 0
+	
+	vel.x = clamp(vel.x,-100*vel_mod,100*vel_mod)
 	
 	if not is_on_floor():
 		if Input.is_action_pressed("jump"):
@@ -48,21 +50,30 @@ func _process(delta):
 			if vel.x < 0:
 				$Sprite.animation = "turning"
 			else:
-				$Sprite.animation = "walking"
+				if vel_mod < 1:
+					$Sprite.animation = "walking"
+				else:
+					$Sprite.animation = "run"
 			
 		elif Input.is_action_pressed("go_left"):
 			$Sprite.flip_h = true
 			if vel.x > 0:
 				$Sprite.animation = "turning"
 			else:
-				$Sprite.animation = "walking"
+				if vel_mod < 1:
+					$Sprite.animation = "walking"
+				else:
+					$Sprite.animation = "run"
 		else:
 			$Sprite.animation = "default"
+		
+		if vel.y > 30:
+			vel.y = 0
 	
 	if Input.is_action_pressed("run"):
-		vel_mod = 1.3
+		vel_mod = 1.2
 	else:
-		vel_mod = 1
+		vel_mod = 0.9
 	
 	if Input.is_action_just_pressed("run"):
 		var axe = Axe.instance()
