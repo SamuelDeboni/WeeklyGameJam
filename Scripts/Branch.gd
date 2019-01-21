@@ -1,28 +1,19 @@
 extends Node
 
-enum DeathType {
-	DEATH_ENEMY,
-	DEATH_PIT_0,
-	DEATH_PIT_1,
-	DEATH_PIT_2,
-	DEATH_PIT_3,
-	DEATH_TIME,
-}
+export (Array, String) var branches
+# Since I cant export an array of a custom resource, branches is an array of Strings, where the
+# index is the branch condition (as per the table below) and the String is the scene to load,
+# going back to the start if it's "".
 
-class BranchCondition:
-	var condition
-	var scene_to_load
-	
-	func _init(cond, scene):
-		condition = cond
-		scene_to_load = scene
-	
-
-export (Array, BranchCondition) var branches = []
+# DEATH_PIT_0 = 0,
+# DEATH_PIT_1 = 1,
+# DEATH_PIT_2 = 2,
+# DEATH_PIT_3 = 3,
+# DEATH_ENEMY = 4,
+# DEATH_TIME = 5,
 
 func branch(death_type):
-	if branches.has(death_type):
+	if branches[death_type] != "":
 		get_tree().change_scene(branches[death_type])
 	else:
-		j# If there are no branches for the death_type, go back to the start
 		get_tree().change_scene("res://Level.tscn")
